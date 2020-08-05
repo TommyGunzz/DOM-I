@@ -39,4 +39,124 @@ const siteContent = {
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.setAttribute('src', siteContent["nav"]["img-src"]);
+
+// My Selectors
+
+const nav = document.querySelector("nav");
+
+const cta = document.querySelector(".cta");
+
+const main = document.querySelector(".main-content");
+
+const mainTop = main.querySelectorAll(".top-content .text-content");
+
+const mainImg = main.querySelector("#middle-img");
+
+const mainBottom = main.querySelectorAll(".bottom-content .text-content");
+
+const contact = document.querySelector(".contact");
+
+const contactH4 = contact.querySelector("h4");
+
+const contactText = contact.querySelectorAll("p");
+
+const footer = document.querySelector("footer");
+
+// Update for Nav Links
+
+let navIndex = 1;
+const newLink1 = document.createElement("a");
+newLink1.href = "#";
+newLink1.textContent = "Appended";
+const newLink2 = document.createElement("a");
+newLink2.href = "#";
+newLink2.textContent = "Prepended";
+
+nav.appendChild(newLink1);
+nav.prepend(newLink2);
+const navLinks = nav.querySelectorAll("a");
+
+document.querySelector("header").setAttribute(
+  "style", 
+  "background: grey;" + 
+  "position: fixed; top: 0;" + 
+  "left: 0;" + 
+  "width: 100%;" + 
+  "padding: 0 17%;");
+
+navLinks.forEach(link => {
+  
+  if(navIndex < navLinks.length && (link.textContent != "Prepended" && link.textContent != "Appended")) {
+    link.textContent = siteContent["nav"]["nav-item-" + navIndex];
+    navIndex++;
+  } else if (navIndex === navLinks.length - 2) {
+    link.textContent = siteContent["nav"]["nav-item-" + navIndex];
+  };
+
+  link.setAttribute("style", "color: green;");
+});
+
+// Update cta 
+
+cta.querySelector("h1").innerText = siteContent["cta"]["h1"];
+cta.querySelector("button").textContent = siteContent["cta"]["button"];
+cta.querySelector("#cta-img").src = siteContent["cta"]["img-src"];
+
+// Making my Button
+
+const myButton = document.createElement("button");
+myButton.type = "button";
+myButton.innerText = "Click Me!";
+myButton.setAttribute("onclick", "changeH1()");
+
+cta.querySelector("button").after(myButton);
+
+function changeH1() {
+  if(cta.querySelector("h1").innerText != "Hi Tommy!") {
+    cta.querySelector("h1").innerText = "Hi Tommy!";
+  } else {
+    cta.querySelector("h1").innerText = siteContent["cta"]["h1"];
+  };
+};
+
+// Adding Main Content 
+
+const sections = ["features", "about", "services", "product", "vision"];
+let sectIndex = 0;
+
+// Adding top content
+
+mainTop.forEach(section => {
+  section.querySelector("h4").innerText = siteContent["main-content"][sections[sectIndex] + "-h4"];
+  section.querySelector("p").innerText = siteContent["main-content"][sections[sectIndex] + "-content"];
+  sectIndex++;
+});
+
+// Fix Middle Image
+
+mainImg.src = siteContent["main-content"]["middle-img-src"];
+
+// Add Bottom Content
+
+sectIndex = 2;
+mainBottom.forEach(section => {
+  section.querySelector("h4").innerText = siteContent["main-content"][sections[sectIndex] + "-h4"];
+  section.querySelector("p").innerText = siteContent["main-content"][sections[sectIndex] + "-content"];
+  sectIndex++;
+});
+
+//Contact H4 Text Update
+
+contactH4.innerText = siteContent["contact"]["contact-h4"];
+const contactInfo = ["address", "phone", "email"];
+let contactInfoIndex = 0;
+
+contactText.forEach(p => {
+  p.innerText = siteContent["contact"][contactInfo[contactInfoIndex]];
+  contactInfoIndex++;
+});
+
+// Add footer
+
+footer.querySelector("p").innerText = siteContent["footer"]["copyright"];
