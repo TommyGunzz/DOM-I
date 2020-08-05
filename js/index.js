@@ -75,11 +75,12 @@ newLink2.textContent = "Prepended";
 
 nav.appendChild(newLink1);
 nav.prepend(newLink2);
+
 const navLinks = nav.querySelectorAll("a");
 
 document.querySelector("header").setAttribute(
   "style", 
-  "background: grey;" + 
+  "background: lightgrey;" + 
   "position: fixed; top: 0;" + 
   "left: 0;" + 
   "width: 100%;" + 
@@ -94,8 +95,10 @@ navLinks.forEach(link => {
     link.textContent = siteContent["nav"]["nav-item-" + navIndex];
   };
 
-  link.setAttribute("style", "color: green;");
+  link.setAttribute("style", "color: green");
+  
 });
+
 
 // Update cta 
 
