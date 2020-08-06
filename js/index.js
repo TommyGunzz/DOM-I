@@ -95,8 +95,8 @@ navLinks.forEach(link => {
     link.textContent = siteContent["nav"]["nav-item-" + navIndex];
   };
 
-  link.setAttribute("style", "color: green");
-  
+  link.setAttribute("style", "color: green"
+  ); 
 });
 
 
